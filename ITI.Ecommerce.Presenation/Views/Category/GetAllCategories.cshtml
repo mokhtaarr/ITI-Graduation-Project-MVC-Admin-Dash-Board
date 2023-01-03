@@ -1,0 +1,36 @@
+﻿@model List<CategoryDto>
+
+@inject IViewLocalizer localizer
+@if(Model.Any()){
+<div class="ms-5">
+<h1 style="color:#0d6efd">@localizer["Categories"]</h1>
+
+
+<table style="width:95%;" class="table table-striped table-dark table-responsive m-1">
+    <thead>
+        <tr>
+            <th scope="col">@localizer["Name English"]</th>
+            <th scope="col">@localizer["Name Arabic"]</th>
+            
+            <th scope="col">@localizer["Update"]</th>
+            <th scope="col">@localizer["Delete"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Cat in Model){
+        <tr>
+            <td>@Cat.NameAR</td>
+            <td>@Cat.NameEN</td>
+                <td><a class="btn text-white" style="background-color:#0d6efd" asp-controller="Category" asp-action="Update" asp-route-id="@Cat.ID">@localizer["Update"]</a></td>
+                <td><a class="btn btn-danger" asp-controller="Category" asp-action="CDelete" asp-route-id="@Cat.ID">@localizer["Delete"]</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+</div>
+}
+else{
+
+    <h1 style="color:#0d6efd">@localizer["Categories"]</h1>
+}

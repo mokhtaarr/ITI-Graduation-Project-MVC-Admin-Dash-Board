@@ -1,0 +1,26 @@
+﻿@model List<CategoryDto>
+
+@inject IViewLocalizer localizer
+
+<h1>Deleted Categories</h1>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">@localizer["Name Arabic"]</th>
+            <th scope="col">@localizer["Name English"]</th>
+           
+            <th scope="col">@localizer["Restore"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Cat in Model)
+        {
+            <tr>
+                <td>@Cat.NameAR</td>
+                <td>@Cat.NameEN</td>
+               <td><a class="btn btn-success" asp-controller="Category" asp-action="Restore" asp-route-id="@Cat.ID">@localizer["Restore"]</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
